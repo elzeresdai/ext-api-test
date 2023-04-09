@@ -38,17 +38,16 @@ services:
 
   db:
     container_name: db-hemi
-    image: mysql:8.0.32
+    image: postgres:latest
     restart: always
     volumes:
-      - ./storage/db-data:/var/lib/mysql
+      - ./storage/db-data:/var/lib/postgres
     ports:
-      - 3306:3306
+      - 5432:5432
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     networks:
       - app_network
 

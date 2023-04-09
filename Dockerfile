@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libzip-dev \
+    libpq-dev\
     zip \
     unzip
 
@@ -18,7 +20,10 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd && pecl install xdebug-3.2.0 && docker-php-ext-enable xdebug 
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl 
+RUN docker-php-ext-install pdo pdo_pgsql pgsql zip exif pcntl
+RUN pecl install xdebug-3.2.0 && docker-php-ext-enable xdebug
+RUN docker-php-ext-install gd
 
 # Get latest Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
