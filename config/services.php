@@ -34,6 +34,9 @@ return [
     'wearepentagon' => [
         'url' => env('WE_ARE_PENTAGON_URL'),
         'token' => env('WE_ARE_PENTAGON_TOKEN'),
+        'username' => env('WE_ARE_PENTAGON_USER'),
+        'password' => env('WE_ARE_PENTAGON_PASS'),
+
     ]
 
 ];

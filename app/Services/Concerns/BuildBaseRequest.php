@@ -9,29 +9,31 @@ use Illuminate\Support\Facades\Http;
 
 trait BuildBaseRequest
 {
-  public function buildRequestWithToken(): PendingRequest
-  {
-    return $this->withBaseUrl()->timeout(
-        seconds: 15,
-    )->withToken(
-        token: $this->apiToken,
-    );
-  }
+    public function buildRequestWithToken($token): PendingRequest
+    {
+        return $this->withBaseUrl()->timeout(
+            seconds: 15,
+        )->withToken(
+            token: $token,
+        );
+    }
 
-  public function buildRequestWithDigestAuth(): PendingRequest
-  {
-    return $this->withBaseUrl()->timeout(
-        seconds: 15,
-    )->withDigestAuth(
-        username: $this->username,
-        password: $this->password,
-    );
-  }
+    public function buildRequestWithBasicAuth(): PendingRequest
+    {
+        return $this->withBaseUrl()->timeout(
+            seconds: 15,
+        )->withBasicAuth(
+            username: $this->client_id,
+            password: $this->client_secret,
+        )->asForm(
+            ['grant_type' => 'client_credentials']
+        );
+    }
 
-  public function withBaseUrl(): PendingRequest
-  {
-    return Http::baseUrl(
-        url: $this->baseUrl,
-    );
-  }
+    public function withBaseUrl(): PendingRequest
+    {
+        return Http::baseUrl(
+            url: $this->baseUrl,
+        );
+    }
 }

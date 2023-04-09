@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\WeArePentagonController;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WeArePentagonController::class, 'storeData']);
