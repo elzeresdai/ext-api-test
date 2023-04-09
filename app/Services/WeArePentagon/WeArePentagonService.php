@@ -20,6 +20,8 @@ class WeArePentagonService
     public function __construct(
         private readonly string $baseUrl,
         private readonly string $apiToken,
+        private readonly string $client_id,
+        private readonly string $client_secret
     ) {}
 
     public function apiData(): ApiDataResource

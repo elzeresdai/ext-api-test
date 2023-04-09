@@ -29,7 +29,7 @@ services:
     container_name: hemi_nginx
     restart: unless-stopped
     ports:
-      - 8080:80
+      - 8070:70
     volumes:
       - ./:/var/www/html
       - ./docker/nginx/hemitest.conf:/etc/nginx/conf.d/hemitest.conf
