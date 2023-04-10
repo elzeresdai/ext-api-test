@@ -9,5 +9,7 @@ class Orders extends Model
 {
     use HasFactory;
 
-    
+    protected $casts = [
+        'fields' => 'array',
+    ];
 }
